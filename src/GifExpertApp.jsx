@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { AddCategory, GifGrid } from "./Components";
+import propTypes from "prop-types";
 
 export const GifExpertApp = () => {
   const [categories, setCategories] = useState(["Naruto"]);
 
-  //Usualmente a los eventos se les llama con el prefijo "on". En este caso abajo cuando le mande la prop con la funcion al componente le colocare un nuevo nombre "onNewCategory" de esta forma semanticamente estaria correcto y no tengo que escribir tanto codigo nuevamente en el componente para cambiar su estado, ya que en este componente principal ya se encuentra la funcion con dicho bcodigo necesario.
+  //Usualmente a los eventos se les llama con el prefijo "on". En este caso abajo cuando le mande la prop con la funcion al componente le colocare un nuevo nombre "onNewCategory" de esta forma semanticamente estaria correcto y no tengo que escribir tanto codigo nuevamente en el componente para cambiar su estado, ya que en este componente principal ya se encuentra la funcion con dicho codigo necesario.
   const onAddCategory = (newCategory) => {
     //aqui aplicamos la condicion de que si la newCategory ya existe en el arreglo, no la vuelva a agregar.
     if (categories.includes(newCategory)) {

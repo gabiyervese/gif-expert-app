@@ -1,4 +1,5 @@
 import { useState } from "react";
+import propTypes from "prop-types";
 
 export const AddCategory = ({ onNewCategory }) => {
   const [inputValue, setInputValue] = useState("");
@@ -12,7 +13,7 @@ export const AddCategory = ({ onNewCategory }) => {
     //con el prevent evito que cada vez que enviemos el form se refresque la pagina entera lo cual hace por defecto.
     event.preventDefault();
     const newInputValue = inputValue.trim();
-    //Con este if condiciomanos a que no se permita elviar el valor del input si su longitud es <= a un caracter.
+    //Con este if condiciomanos a que no se permita enviar el valor del input si su longitud es <= a un caracter.
     if (newInputValue.length <= 1) return;
     //Ejecuto la funcion con el newInputValue
     onNewCategory(newInputValue);
@@ -21,7 +22,7 @@ export const AddCategory = ({ onNewCategory }) => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} aria-label="form">
       <input
         type="text"
         placeholder="Search gifs"
@@ -31,4 +32,9 @@ export const AddCategory = ({ onNewCategory }) => {
       />
     </form>
   );
+};
+
+//Especifico que la prop que recibe el componente sea obligatoria para que pueda funcionar el componente.
+AddCategory.propTypes = {
+  onNewCategory: propTypes.func.isRequired,
 };
